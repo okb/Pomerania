@@ -10,9 +10,10 @@ class Repository
      json=LoadFromUri(@headers,@uri+"\/"+id)
      get_resource(@class_name,json)
   end
-  def list(query)                                              #day 1 and this is allready in need of refactoring...
-    json=LoadFromUri(@headers,@uri+"?"+query)
-    array=[]
+  def list(&query)                                              #day 1 and this is allready in need of refactoring...
+    query_string=yield (Query.new)
+    json=LoadFromUri(@headers,@uri+query_string.to_s)
+
     json["items"].map do |json_item|
       get_resource @class_name, json_item
     end

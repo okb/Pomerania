@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/Pomerania/version'
 require File.dirname(__FILE__) + '/Resources/resources'
 require File.dirname(__FILE__) + '/schema'
 require File.dirname(__FILE__) + '/repository'
+require File.dirname(__FILE__) + '/query'
 require 'json'
 module Pomerania
   class DependencySorter < Hash

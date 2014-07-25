@@ -16,7 +16,7 @@ class LazyLoader
   def load
     if @property_definition.type_name=="array"
       repository=Repository.new("Pomerania::Resources::"+@property_definition.item_type,@json_definition["_ref"], @headers,@schema)
-      repository.list ""
+      repository.list {|x|}
     else
       repository=Repository.new("Pomerania::Resources::"+@property_definition.type_name,LazyLoader::repo_url_from_item_url(@json_definition["_ref"]), @headers,@schema)
       repository.get LazyLoader::item_id_from_item_url(@json_definition["_ref"])
