@@ -30,12 +30,22 @@ class Repository
 
   #from here on is serialization TODO: move out!
   def get_resource(class_name,json)
+    if(json["_type"]!=nil)
+      class_name="Pomerania::Resources::"+json["_type"]
+    end
     item=eval("#{class_name}.new")
+    set_property_values(item,class_name,json)
+    item
+  end
+
+  def set_property_values(item,class_name,json)    #build item. Not very nice but whatevah
     type_def=@schema.get_type_definition_for(class_name)
     type_def.properties.each do |prop|
       eval "item.#{Pomerania::Client::function_name_create(prop.name)}=get_property_value(prop,json[\"#{prop.name}\"])"
     end
-    item
+    if(type_def.extends!=nil)
+      set_property_values(item,"Pomerania::Resources::"+type_def.extends,json)
+    end
   end
 
   def is_lazy?(value)
@@ -47,6 +57,9 @@ class Repository
   def get_property_value(property_definition,value)
     if(is_lazy?(value))
       return LazyLoader.new(property_definition,value,@headers,@schema)
+    end
+    if(value==nil)
+      return nil
     end
     case property_definition.type_name
       when "string"
@@ -65,6 +78,9 @@ class Repository
   end
   def get_array(property_definition,value)
      value.map do |x|
+       if(x==nil)
+         return nil
+       end
        case property_definition.item_type
          when "string"
            x.to_s

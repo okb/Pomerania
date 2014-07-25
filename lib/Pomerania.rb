@@ -3,8 +3,14 @@ require File.dirname(__FILE__) + '/Resources/resources'
 require File.dirname(__FILE__) + '/schema'
 require File.dirname(__FILE__) + '/repository'
 require 'json'
-
 module Pomerania
+  class DependencySorter < Hash
+    include TSort
+    alias tsort_each_node each_key
+    def tsort_each_child(node, &block)
+      fetch(node).each(&block)
+    end
+  end
   class Client
     def initialize(uri, headers=nil)
       @uri=uri
@@ -12,15 +18,24 @@ module Pomerania
       generate_classes(@schema)
       generate_repos(uri,headers)
     end
+    def sort_types_by_dependency(input_types)
+      dependency_array=input_types.map do|x|
+        if(x.extends==nil)
+          [x.name,[]]
+        else
+          [x.name,[x.extends]]
+        end
+      end
+      DependencySorter[Hash[*dependency_array.flatten(1)]].tsort.map { |x| input_types.select { |y| y.name==x }.first }
+    end
     def generate_classes(schema)
-      schema.types.each do |type_definition|
-        eval("Pomerania::Resources::#{type_definition.name}=Class.new Pomerania::Resources::Resource")
-
-        eval("Pomerania::Resources::#{type_definition.name}.class_eval('
-          def initialize()
-            puts  \":#{type_definition.name} Created\"
-          end
-          ')")
+      types=sort_types_by_dependency(schema.types)
+      types.each do |type_definition|
+        if(type_definition.extends==nil)
+          eval("Pomerania::Resources::#{type_definition.name}=Class.new Pomerania::Resources::Resource")
+        else
+          eval("Pomerania::Resources::#{type_definition.name}=Class.new Pomerania::Resources::"+type_definition.extends)
+        end
         type_definition.properties.each do |prop|
           eval("Pomerania::Resources::#{type_definition.name}.class_eval('
           def #{Client::function_name_create(prop.name)}

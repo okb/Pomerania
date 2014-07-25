@@ -1,9 +1,13 @@
-class TypeDefinition
-  attr_reader :name,:uri,:properties
 
-  def initialize(name,uri,properties)
+require 'tsort'
+
+class TypeDefinition
+  attr_reader :name,:uri,:properties, :extends
+
+  def initialize(name,uri,extends,properties)
     @name=name
     @uri=uri
+    @extends=extends
     @properties=properties
   end
 end

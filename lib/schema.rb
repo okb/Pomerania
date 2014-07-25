@@ -19,7 +19,7 @@ class Schema
   end
   def get_type_definition_for_uri(uri)
     resource_type=@types.select do|x|
-      x.uri==uri
+      x.uri==uri&&x.extends==nil
     end
     resource_type[0]
   end
@@ -45,7 +45,7 @@ class Schema
     end
   end
   def parse_type(type_hash)
-    TypeDefinition.new(type_hash["name"],type_hash["uri"],parse_properties(type_hash["properties"]))
+    TypeDefinition.new(type_hash["name"],type_hash["uri"],type_hash["extends"],parse_properties(type_hash["properties"]))
   end
   def parse_properties(property_hash)
     property_hash.map do |k,val|
