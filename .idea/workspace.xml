@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8350adcc-0899-4ce6-a4d3-806348a68508" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/query.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Pomerania.rb" afterPath="$PROJECT_DIR$/lib/Pomerania.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/client_test.rb" afterPath="$PROJECT_DIR$/test/client_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/lazy_loader.rb" afterPath="$PROJECT_DIR$/lib/lazy_loader.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/repository.rb" afterPath="$PROJECT_DIR$/lib/repository.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Pomerania.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="8350adcc-0899-4ce6-a4d3-806348a68508" time="1406288919836" ignored="false" />
+    <file path="/Dummy.txt" changelist="8350adcc-0899-4ce6-a4d3-806348a68508" time="1407507424037" ignored="false" />
     <file path="/Pomerania.rb" changelist="8350adcc-0899-4ce6-a4d3-806348a68508" time="1406298183133" ignored="false" />
     <file path="/schema.rb" changelist="8350adcc-0899-4ce6-a4d3-806348a68508" time="1406290781940" ignored="false" />
     <file path="/client_test.rb" changelist="8350adcc-0899-4ce6-a4d3-806348a68508" time="1406300027840" ignored="false" />
@@ -89,7 +84,7 @@
       <file leaf-file-name="client_test.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/client_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="42" selection-start="694" selection-end="694" vertical-scroll-proportion="0.5572065">
+            <state line="25" column="16" selection-start="668" selection-end="668" vertical-scroll-proportion="0.37055337">
               <folding />
             </state>
           </provider>
@@ -183,7 +178,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -268,15 +262,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="reference.idesettings.emmet" />
     <property name="recentsLimit" value="5" />
-    <property name="options.searchVisible" value="true" />
+    <property name="options.lastSelected" value="reference.idesettings.emmet" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.client_test">
     <configuration default="false" name="client_test" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
@@ -423,23 +418,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1173" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="27" width="1920" height="1173" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959655" sideWeight="0.6746641" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2598171" sideWeight="0.6746641" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26304466" sideWeight="0.6746641" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39827254" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3253359" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32521087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917467" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -505,13 +500,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/test/client_test.rb</url>
-          <line>25</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="91" />
     </breakpoint-manager>
   </component>
@@ -530,30 +518,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/Pomerania/version.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file:///usr/lib/ruby/1.9.1/net/http.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="430" column="0" selection-start="13713" selection-end="13713" vertical-scroll-proportion="0.33221477">
-          <folding />
-        </state>
+        <state line="430" column="0" selection-start="13713" selection-end="13713" vertical-scroll-proportion="0.33221477" />
       </provider>
     </entry>
     <entry file="file:///usr/lib/ruby/1.9.1/test/unit.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="571" column="0" selection-start="16468" selection-end="16468" vertical-scroll-proportion="0.29420504">
-          <folding />
-        </state>
+        <state line="571" column="0" selection-start="16468" selection-end="16468" vertical-scroll-proportion="0.29420504" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/type_definition.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="3" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="12" column="3" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/schema.rb">
@@ -614,14 +594,12 @@
     </entry>
     <entry file="file:///usr/lib/ruby/1.9.1/minitest/unit.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="954" column="0" selection-start="24574" selection-end="24574" vertical-scroll-proportion="0.33216783">
-          <folding />
-        </state>
+        <state line="954" column="0" selection-start="24574" selection-end="24574" vertical-scroll-proportion="0.33216783" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/client_test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="42" selection-start="694" selection-end="694" vertical-scroll-proportion="0.5572065">
+        <state line="25" column="16" selection-start="668" selection-end="668" vertical-scroll-proportion="0.37055337">
           <folding />
         </state>
       </provider>
