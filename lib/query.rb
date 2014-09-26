@@ -1,3 +1,26 @@
+class InstantFilter
+
+  def method_missing(meth, *args, &block)
+    @name=@name+"."+meth.to_s
+    self
+  end
+  def initialize name
+    @name=name.to_s
+  end
+  def ==( target)
+    @equality=target
+  end
+  def to_s
+    if(@equality!=nil)
+      if(@equality.is_a?Integer)
+        return "#{@name} eq #{@equality}"
+      end
+
+     return "#{@name} eq '#{@equality}'"
+    end
+    true.to_s
+  end
+end
 class Query
   def initialize
     @filters=[]
@@ -9,7 +32,11 @@ class Query
   def expand new_expand
     @expands<<new_expand
   end
-
+  def method_missing(meth, *args, &block)
+    instant_filter=InstantFilter.new  meth
+    @filters<<instant_filter
+    instant_filter
+  end
   def to_s
     query_string=""
     if(@filters.count>0)
