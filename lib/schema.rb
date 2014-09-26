@@ -1,16 +1,18 @@
+#coding: utf-8
 require 'net/http'
 require 'json'
 require File.dirname(__FILE__) + '/type_definition'
 class Schema
-  attr_reader :types
+  attr_reader :types,:namespace
 
   def initialize(uri, headers=nil)
+    @namespace=URI.parse(uri).host.gsub(/[^a-z ]/i, '').capitalize
     parse(retrieve(headers, uri))
   end
 
   def get_type_definition_for(klass)
     resource_type=@types.select do|x|
-      "Pomerania::Resources::"+x.name==klass.to_s
+      "Pomerania::Resources::"+@namespace+"::"+x.name==klass.to_s
     end
     resource_type[0]
   end

@@ -32,7 +32,7 @@ class Repository
   #from here on is serialization TODO: move out!
   def get_resource(class_name,json)
     if(json["_type"]!=nil)
-      class_name="Pomerania::Resources::"+json["_type"]
+      class_name="Pomerania::Resources::"+@schema.namespace+"::"+json["_type"]
     end
     item=eval("#{class_name}.new")
     set_property_values(item,class_name,json)
@@ -45,7 +45,7 @@ class Repository
       eval "item.#{Pomerania::Client::function_name_create(prop.name)}=get_property_value(prop,json[\"#{prop.name}\"])"
     end
     if(type_def.extends!=nil)
-      set_property_values(item,"Pomerania::Resources::"+type_def.extends,json)
+      set_property_values(item,"Pomerania::Resources::"+@schema.namespace+"::"+type_def.extends,json)
     end
   end
 
@@ -71,7 +71,7 @@ class Repository
         get_array(property_definition,value)
       else
         if(@schema.is_pomona_type?(property_definition.type_name))
-          get_resource("Pomerania::Resources::"+property_definition.type_name,value)
+          get_resource("Pomerania::Resources::"+@schema.namespace+"::"+property_definition.type_name,value)
         else
           value.to_s
         end
@@ -91,7 +91,7 @@ class Repository
            get_array(property_definition,x)
          else
            if(@schema.is_pomona_type?(property_definition.item_type))
-             get_resource("Pomerania::Resources::"+property_definition.item_type,x)
+             get_resource("Pomerania::Resources::"+@schema.namespace+"::"+property_definition.item_type,x)
            else
              x.to_s
            end

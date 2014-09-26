@@ -16,8 +16,19 @@ module Pomerania
     def initialize(uri, headers=nil)
       @uri=uri
       @schema=Schema.new("#{uri}schemas/",headers)
-      generate_classes(@schema)
-      generate_repos(uri,headers)
+      if(!Client.defined_module?(@schema.namespace))
+        generate_module(@schema)
+        generate_classes(@schema)
+        generate_repos(uri,headers)
+      end
+    end
+    def self.defined_module? name
+      begin #jesus
+        mod = Required::Module::const_get "Pomerania::Resources::"+name
+        return true
+      rescue NameError
+        return false
+      end
     end
     def sort_types_by_dependency(input_types)
       dependency_array=input_types.map do|x|
@@ -29,16 +40,20 @@ module Pomerania
       end
       DependencySorter[Hash[*dependency_array.flatten(1)]].tsort.map { |x| input_types.select { |y| y.name==x }.first }
     end
+    def generate_module(schema)
+      Pomerania::Resources.module_eval("module #{@schema.namespace} end")
+    end
+
     def generate_classes(schema)
       types=sort_types_by_dependency(schema.types)
       types.each do |type_definition|
         if(type_definition.extends==nil)
-          eval("Pomerania::Resources::#{type_definition.name}=Class.new Pomerania::Resources::Resource")
+          Pomerania::Resources.module_eval("#{@schema.namespace}::#{type_definition.name}=Class.new Pomerania::Resources::Resource")
         else
-          eval("Pomerania::Resources::#{type_definition.name}=Class.new Pomerania::Resources::"+type_definition.extends)
+          Pomerania::Resources.module_eval("#{@schema.namespace}::#{type_definition.name}=Class.new #{@schema.namespace}::"+type_definition.extends)
         end
         type_definition.properties.each do |prop|
-          eval("Pomerania::Resources::#{type_definition.name}.class_eval('
+          Pomerania::Resources.module_eval("#{@schema.namespace}::#{type_definition.name}.class_eval('
           def #{Client::function_name_create(prop.name)}
             get_property(\"#{prop.name}\")
           end
@@ -57,11 +72,11 @@ module Pomerania
         function_name=Client::function_name_create(key)
         Client.class_eval("
           def #{function_name}
-            @#{function_name}_repository
+            @@#{function_name}_repository
           end
         ")
         resource_type=@schema.get_type_definition_for_uri(key)
-        eval "@#{function_name}_repository=Repository.new Pomerania::Resources::#{resource_type.name}, \"#{uri+resource_type.uri}\", headers,@schema"
+        eval "@@#{function_name}_repository=Repository.new Pomerania::Resources::#{@schema.namespace}::#{resource_type.name}, \"#{uri+resource_type.uri}\", headers,@schema"
       end
     end
 
