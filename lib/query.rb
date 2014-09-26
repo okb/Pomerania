@@ -5,11 +5,9 @@ class Query
   end
   def filter new_filter
     @filters<<new_filter
-    self
   end
   def expand new_expand
     @expands<<new_expand
-    self
   end
 
   def to_s

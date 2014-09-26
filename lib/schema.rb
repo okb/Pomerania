@@ -5,8 +5,13 @@ require File.dirname(__FILE__) + '/type_definition'
 class Schema
   attr_reader :types,:namespace
 
-  def initialize(uri, headers=nil)
-    @namespace=URI.parse(uri).host.gsub(/[^a-z ]/i, '').capitalize
+  def initialize(uri,namespace=nil, headers=nil)
+    if(namespace==nil)
+      @namespace=URI.parse(uri).host.gsub(/[^a-z ]/i, '').capitalize
+    else
+      @namespace=namespace
+    end
+
     parse(retrieve(headers, uri))
   end
 

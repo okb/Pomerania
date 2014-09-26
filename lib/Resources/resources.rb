@@ -16,5 +16,11 @@ module Pomerania::Resources
         @property_table={}
       end
     end
+    def uri=uri
+      @uri=uri
+    end
+    def uri
+      @uri
+    end
   end
 end

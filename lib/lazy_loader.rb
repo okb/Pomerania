@@ -22,6 +22,9 @@ class LazyLoader
       repository.get LazyLoader::item_id_from_item_url(@json_definition["_ref"])
     end
   end
+  def ref
+    @json_definition["_ref"]
+  end
   def self.repo_url_from_item_url(url)
      url.split('/')[0..-2].join('/')
   end

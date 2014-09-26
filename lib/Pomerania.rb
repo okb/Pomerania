@@ -13,9 +13,11 @@ module Pomerania
     end
   end
   class Client
-    def initialize(uri, headers=nil)
+    def initialize(uri, namespace=nil, headers={})
+      headers["accept"]="application/json"
+      headers["content-type"]="application/json"
       @uri=uri
-      @schema=Schema.new("#{uri}schemas/",headers)
+      @schema=Schema.new("#{uri}schemas/",namespace,headers)
       if(!Client.defined_module?(@schema.namespace))
         generate_module(@schema)
         generate_classes(@schema)
