@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/Pomerania/version'
 require File.dirname(__FILE__) + '/Resources/resources'
-require File.dirname(__FILE__) + '/schema'
-require File.dirname(__FILE__) + '/repository'
-require File.dirname(__FILE__) + '/query'
+require File.dirname(__FILE__) + '/Schema/schema'
+require File.dirname(__FILE__) + '/Repository/repository'
 require 'json'
+require 'tsort'
 module Pomerania
   class DependencySorter < Hash
     include TSort
@@ -17,7 +17,7 @@ module Pomerania
       headers["accept"]="application/json"
       headers["content-type"]="application/json"
       @uri=uri
-      @schema=Schema.new("#{uri}schemas/",namespace,headers)
+      @schema=Schema::Schema.new("#{uri}schemas/",namespace,headers)
       if(!Client.defined_module?(@schema.namespace))
         generate_module(@schema)
         generate_classes(@schema)
@@ -78,7 +78,7 @@ module Pomerania
           end
         ")
         resource_type=@schema.get_type_definition_for_uri(key)
-        eval "@@#{function_name}_repository=Repository.new Pomerania::Resources::#{@schema.namespace}::#{resource_type.name}, \"#{uri+resource_type.uri}\", headers,@schema"
+        eval "@@#{function_name}_repository=Repository::Repository.new Pomerania::Resources::#{@schema.namespace}::#{resource_type.name}, \"#{uri+resource_type.uri}\", headers,@schema"
       end
     end
 

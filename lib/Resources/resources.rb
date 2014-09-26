@@ -2,7 +2,7 @@ module Pomerania::Resources
   class Resource
     def get_property(name)
       ensure_property_table
-      if(@property_table[name].is_a?LazyLoader)
+      if(@property_table[name].is_a?Pomerania::Serialization::LazyLoader)
         return @property_table[name].retrieve
       end
       @property_table[name]

@@ -1,3 +1,5 @@
+
+require File.dirname(__FILE__) + '/lazy_loader'
 module Pomerania::Serialization
   class Serializer
     def initialize schema
